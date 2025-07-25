@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 
 class Program
 {
-    // 8 directions: right, down, left, up, and diagonals
+    // Define 8 directions: right, down, left, up, and diagonals
     static readonly int[][] directions = new int[][]
     {
         new int[] { 0, 1 },   // right
@@ -28,20 +30,23 @@ class Program
 
         string[] lines = File.ReadAllLines(filePath);
         int rows = lines.Length;
-        int cols = lines[0].Trim().Length;
+        int cols = lines[0].Length;
 
-        //2D grid of characters (grid) using the values from a list or array of strings (lines)
+        // Load the grid
         char[,] grid = new char[rows, cols];
         for (int r = 0; r < rows; r++)
         {
             string line = lines[r].Trim();
             for (int c = 0; c < cols; c++)
+            {
                 grid[r, c] = line[c];
+            }
         }
 
         string word = "XMAS";
         int count = 0;
 
+        // Check all positions and directions
         for (int r = 0; r < rows; r++)
         {
             for (int c = 0; c < cols; c++)
@@ -49,7 +54,9 @@ class Program
                 foreach (var dir in directions)
                 {
                     if (CheckWord(grid, r, c, dir[0], dir[1], word))
+                    {
                         count++;
+                    }
                 }
             }
         }
@@ -57,7 +64,7 @@ class Program
         Console.WriteLine($"\nTotal '{word}' found: {count}");
     }
 
-    //the return bool method for checks if a given word can be found in the grid starting at position (r, c) and moving in the direction specified by (dr, dc
+    //the method to check word
     static bool CheckWord(char[,] grid, int r, int c, int dr, int dc, string word)
     {
         int rows = grid.GetLength(0);
@@ -67,7 +74,7 @@ class Program
         {
             int nr = r + dr * i;
             int nc = c + dc * i;
-            // Check if the character in the grid matches the i-th character of the word
+
             if (nr < 0 || nc < 0 || nr >= rows || nc >= cols)
                 return false;
 

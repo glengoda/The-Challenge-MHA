@@ -8,7 +8,7 @@ class Program
     static void Main()
     {
         //declare
-        string filePath = @"C:\Users\tshem\source\repos\Test\Day 3\bin\Debug\net8.0\data3.txt";
+        string filePath = @"data.txt";
         var inputLines = File.ReadAllLines(filePath);
         
         int safeCount = CountSafeReportsWithDampener(inputLines);

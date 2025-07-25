@@ -9,7 +9,7 @@ class Program
         var right = new List<int>();
 
         //reading from a file
-        var lines = File.ReadAllLines(@"C:\Users\tshem\source\repos\Test\Test\bin\Debug\net8.0\data.txt");
+        var lines = File.ReadAllLines(@"data.txt");
 
         //This loop goes through each line from the lines array
         foreach (var line in lines)

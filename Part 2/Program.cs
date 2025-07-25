@@ -10,7 +10,7 @@
         var count2 = new Dictionary<int, int>();
 
         //reading from a file
-        var lines = File.ReadAllLines(@"C:\Users\tshem\source\repos\Test\Part 2\bin\Debug\net8.0\data2.txt");
+        var lines = File.ReadAllLines(@"data.txt");
 
         //This loop goes through each line from the lines array
         foreach (var line in lines)
